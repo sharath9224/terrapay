@@ -11,13 +11,10 @@ def run_sql_query(query_name, start_date, end_date, category):
     )
     cursor = db_connection.cursor()
 
+    # Define the SQL queries
     sql_queries = {
-    'demand': """
-        SELECT * FROM sales_data
-        WHERE category = '{{ category }}'
-        AND date >= '{{ start_date }}'
-        AND date <= '{{ end_date }}'
-    """
+        'demand': "SELECT * FROM terrapay WHERE Description = %s AND InvoiceDate BETWEEN %s AND %s;",
+        # Add more SQL queries as needed
     }
 
     # Check if query_name exists
